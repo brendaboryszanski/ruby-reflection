@@ -15,7 +15,7 @@ module Before
         @l_variables[name.to_s]
       end
 
-      if befores != nil
+      unless befores.nil?
         befores.each {|before| self.instance_exec &before}
       end
       old_method.bind(self).call(*args, &block)

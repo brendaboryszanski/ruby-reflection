@@ -16,7 +16,7 @@ module After
       end
 
       result = old_method.bind(self).call(*args, &block)
-      if afters != nil
+      unless afters.nil?
         afters.each {|after|
           if after.arity == 1
             self.instance_exec result, &after

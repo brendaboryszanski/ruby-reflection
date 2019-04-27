@@ -18,7 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
+=======
+      <file pinned="false" current-in-tab="false">
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
         <entry file="file://$PROJECT_DIR$/ruby/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -27,6 +31,18 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ruby/lib/Before.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -65,6 +81,21 @@
               <item name="grupo5-2019-1c" type="462c0819:PsiDirectoryNode" />
               <item name="ruby" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="grupo5-2019-1c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grupo5-2019-1c" type="462c0819:PsiDirectoryNode" />
+              <item name="ruby" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="grupo5-2019-1c" type="b2602c69:ProjectViewProjectNode" />
+              <item name="grupo5-2019-1c" type="462c0819:PsiDirectoryNode" />
+              <item name="ruby" type="462c0819:PsiDirectoryNode" />
+              <item name="spec" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
           </expand>
           <select />
         </subPane>
@@ -182,12 +213,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1556322254179</updated>
+<<<<<<< HEAD
       <workItem from="1556322255784" duration="1108000" />
+=======
+      <workItem from="1556322255784" duration="801000" />
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1108000" />
+=======
+    <option name="totallyTimeSpent" value="801000" />
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="43" width="1260" height="733" extended-state="0" />
@@ -218,6 +257,15 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/ruby/lib/AfterEachCall.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby/lib/BeforeAndAfterEachCall.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
     <entry file="file://$PROJECT_DIR$/ruby/lib/punto3.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-145" />
@@ -238,6 +286,16 @@
     <entry file="file://$PROJECT_DIR$/ruby/lib/punto1.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/ruby/lib/Invariant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
     <entry file="file://$PROJECT_DIR$/ruby/lib/tp.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-363" />
@@ -245,11 +303,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ruby/lib/After.rb">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="125">
+=======
+        <state relative-caret-position="195">
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
           <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/ruby/lib/Before.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -299,6 +362,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="5" selection-start-column="5" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/ruby/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ruby/lib/Before.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+>>>>>>> 538940bfee59d8c2af283fd8d088a25b00175106
         </state>
       </provider>
     </entry>

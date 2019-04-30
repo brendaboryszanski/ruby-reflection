@@ -2,7 +2,7 @@ module After
 
   attr_accessor :l_variables
 
-  def redefine_method_with_afters(name, afters)
+  def redefine_method_with_after(name, after)
     old_method = instance_method(name)
     define_method(name) {|*args, &block|
       @l_variables = {}
@@ -10,21 +10,23 @@ module After
         @l_variables[param_name] = args[index]
       }
 
+      def self.respond_to_missing?(symbol, include_private)
+        super || @l_variables.key?(name.to_s)
+      end
+
       def self.method_missing(name, *args, &block)
         super name unless @l_variables.key?(name.to_s)
         @l_variables[name.to_s]
       end
 
       result = old_method.bind(self).call(*args, &block)
-      unless afters.nil?
-        afters.each {|after|
-          if after.arity == 1
-            self.instance_exec result, &after
-          else
-            self.instance_exec &after
-          end
-        }
+
+      if after.arity == 1
+        self.instance_exec result, &after
+      else
+        self.instance_exec &after
       end
+
       result
     }
   end

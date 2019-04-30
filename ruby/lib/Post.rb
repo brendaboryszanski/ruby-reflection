@@ -6,13 +6,22 @@ module Post
     include After
     include Operation
 
+    attr_accessor :post_expected_to_define
+
     def post(&a_post)
-      add_operation(proc { |name|
-        redefine_method_with_afters name, [proc { |result|
+
+      if post_expected_to_define
+        raise "Ya hay un post"
+      end
+      self.post_expected_to_define= true
+
+      run_on_method_added(true) { |name|
+        self.post_expected_to_define= false
+        redefine_method_with_after name, proc { |result|
           unless self.instance_exec result, &a_post
             raise "¡Post!"
           end
-        }]
-      })
+        }
+      }
     end
 end

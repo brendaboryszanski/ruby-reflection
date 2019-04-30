@@ -1,25 +1,14 @@
 require_relative "Before.rb"
+require_relative "Operation.rb"
 
 module BeforeEachCall
-    
-  include Before
-  
-  attr_accessor :befores, :defining_before_method
 
-  def befores
-    @befores ||= []
-  end
-  
-  def before_each_call before
-    befores << before
-  end
-  
-  def method_added name
-    unless @defining_before_method
-      @defining_before_method = true
-      redefine_method_with_befores name, @befores
-      defined?(super) && super
-      @defining_before_method = false
-    end
+  include Before
+  include Operation
+
+  def before_each_call(before)
+    run_on_method_added { |name|
+      redefine_method_with_before name, before
+    }
   end
 end

@@ -25,7 +25,7 @@ end
 
 # Invariant no corta
 atacante = Guerrero.new(5, 5)
-boludo = Guerrero.new(10, -50)
+#boludo = Guerrero.new(10, -50)
 #atacante.atacar(boludo)
 
 # Invariant corta

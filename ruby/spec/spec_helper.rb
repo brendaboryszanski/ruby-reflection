@@ -1,3 +1,5 @@
 require 'rspec'
-
-require_relative '../lib/prueba'
+require_relative '../../ruby/lib/Pre'
+require_relative '../../ruby/lib/Post'
+require_relative '../../ruby/lib/BeforeAndAfterEachCall'
+require_relative '../../ruby/lib/Invariant'

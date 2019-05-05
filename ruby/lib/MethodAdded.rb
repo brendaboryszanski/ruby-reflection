@@ -29,10 +29,12 @@ module Contratos
         define_singleton_method(param[0]) { param[1] }
       }
       method = proc { old_method.bind(self).call(*args) }
-      self.instance_exec { operation.call(method, self) }
+      result = self.instance_exec { operation.call(method, self) }
 
       #Deleting params of methods
-      methods_overrided.each{ |param| define_singleton_method(param[0]) { param[1] }}
+      methods_overrided.each{ |name, method|
+        define_singleton_method(name) { method.call } }
+      result
     end
 
   end

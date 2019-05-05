@@ -12,6 +12,22 @@ module Contratos
   end
 
   def post(&block)
-    after_each_call(block, true)
+    if block.arity == 1
+      check_post = proc { |result|
+        result = self.instance_exec { block.call(result) }
+        unless result
+          raise "No se cumple el post"
+        end
+      }
+    else
+      check_post = proc {
+        result = self.instance_exec &block
+        unless result
+          raise "No se cumple el post"
+        end
+      }
+    end
+
+    after_each_call(check_post, true)
   end
 end

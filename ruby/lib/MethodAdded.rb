@@ -22,11 +22,11 @@ module Contratos
       params = self.class.get_params(old_method, *args)
       #Adding params of methods
       methods_overrided = Hash.new
-      params.each { |param|
-        if self.respond_to? param[0]
-          methods_overrided[param[0]] = self.method(param[0])
+      params.each { |name, value|
+        if self.respond_to? name
+          methods_overrided[name] = self.method(name)
         end
-        define_singleton_method(param[0]) { param[1] }
+        define_singleton_method(name) { value }
       }
       method = proc { old_method.bind(self).call(*args) }
       result = self.instance_exec { operation.call(method, self) }

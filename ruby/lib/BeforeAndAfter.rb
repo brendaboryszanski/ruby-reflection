@@ -11,6 +11,7 @@ module Contratos
 
   def after_each_call(after, once = false)
     operation = proc{ |method, instance|
+      puts instance.methods(false)
       result = method.call
       if(after.arity == 1)
         instance.instance_exec result, &after

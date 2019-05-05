@@ -13,9 +13,8 @@ module Contratos
     operations[operation] = once
   end
 
-  def redefine_method(operation, name)
-    old_method = instance_method(name)
-    define_method(name) do |*args|
+  def redefine_method(operation, old_method)
+    define_method(old_method.name) do |*args|
       #Adding params of methods
       params = self.class.add_params(self, old_method, *args)
       method = proc { old_method.bind(self).call(*args) }
@@ -29,7 +28,8 @@ module Contratos
   def method_added(name)
     unless redefiniendo
       @redefiniendo = true
-      operations.keys.each{ |operation| redefine_method(operation, name) }
+      old_method = instance_method(name)
+      operations.keys.each{ |operation| redefine_method(operation, old_method) }
       @operations = operations.delete_if{|operation, once| once}
       @redefiniendo = false
     end

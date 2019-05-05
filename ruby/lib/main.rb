@@ -1,1 +1,1 @@
-require "./punto1.rb"
+require "./punto2.rb"

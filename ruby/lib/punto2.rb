@@ -2,19 +2,23 @@ require_relative 'BeforeAndAfter.rb'
 require_relative 'Invariant.rb'
 class Guerrero
 
-  extend Contratos
   attr_accessor :vida, :fuerza
 
   def initialize(vida, fuerza)
     vida =vida
     fuerza= fuerza
   end
-  invariant { puts self}
+
+
+  extend Contratos
+
+  invariant { vida > 0 }
   invariant { fuerza > 0 && fuerza < 100 }
 
 
   def atacar(otro)
-    otro.vida -= fuerza
+    puts "estoy atacando"
+    # otro.vida -= fuerza
   end
 
   def decir_hola

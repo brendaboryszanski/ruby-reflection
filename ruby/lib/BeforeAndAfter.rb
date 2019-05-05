@@ -2,17 +2,17 @@ require_relative 'MethodAdded.rb'
 module Contratos
 
   def before_each_call(before)
-    operation = proc{ |method|
-      self.instance_exec { before.call }
+    operation = proc{ |method, instance|
+      instance.instance_exec { before }
       method.call
     }
     run_on_method_added(operation)
   end
 
   def after_each_call(after)
-    operation = proc{ |method|
+    operation = proc{ |method, instance|
       method.call
-      self.instance_exec { after.call }
+      instance.instance_exec { after }
     }
     run_on_method_added(operation)
   end

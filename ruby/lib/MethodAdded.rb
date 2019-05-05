@@ -18,10 +18,10 @@ module Contratos
       #Adding params of methods
       param_names = old_method.parameters.map(&:last).map(&:to_s)
       params = param_names.zip(args)
-      method_overrided = Hash.new
+      methods_overrided = Hash.new
       params.each { |param|
         if self.respond_to? (param[0])
-          method_overrided[param[0]] = param[1]
+          methods_overrided[param[0]] = self.method(param[0])
         end
         define_singleton_method(param[0]) { param[1] }
       }
@@ -30,12 +30,11 @@ module Contratos
       self.instance_exec { operation.call(method, self) }
 
       #Deleting params of methods
-      method_overrided.each{ |param| define_singleton_method(param[0]) { param[1] }}
+      methods_overrided.each{ |param| define_singleton_method(param[0]) { param[1] }}
     end
 
   end
   def method_added(name)
-    puts name
     unless redefiniendo
       @redefiniendo = true
       operations.each{ |operation| redefine_method(operation, name) }

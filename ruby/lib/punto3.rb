@@ -22,6 +22,6 @@ end
 
 
 bren = OperacionesMatematicas.new
-bren.divisor
+#bren.divisor
 bren.dividir(20,0)
-bren.divisor
+#bren.divisor

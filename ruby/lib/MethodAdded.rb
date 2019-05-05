@@ -16,6 +16,7 @@ module Contratos
     param_names = method.parameters.map(&:last).map(&:to_s)
     param_names.zip(args)
   end
+
   def redefine_method(operation, name)
     old_method = instance_method(name)
     define_method(name) do |*args|
@@ -31,6 +32,7 @@ module Contratos
       method = proc { old_method.bind(self).call(*args) }
       result = self.instance_exec { operation.call(method, self) }
 
+      params.each{ |param_name, value| self.singleton_class.send :remove_method, param_name }
       #Deleting params of methods
       methods_overrided.each{ |name, method|
         define_singleton_method(name) { method.call } }

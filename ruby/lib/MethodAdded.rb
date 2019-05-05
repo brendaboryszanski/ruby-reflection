@@ -17,25 +17,32 @@ module Contratos
     param_names.zip(args)
   end
 
+  def add_params(instance, method, *args)
+    @methods_overrided = Hash.new
+    params = get_params(method, *args)
+    params.each { |name, value|
+      if instance.respond_to? name
+        @methods_overrided[name] = instance.method(name)
+      end
+      instance.define_singleton_method(name) { value }
+    }
+  end
+
+  def remove_params(instance, params)
+    params.each{ |param_name, value| instance.singleton_class.send :remove_method, param_name }
+    #Deleting params of methods
+    @methods_overrided.each{ |name, method|
+      define_singleton_method(name) { method.call } }
+  end
+
   def redefine_method(operation, name)
     old_method = instance_method(name)
     define_method(name) do |*args|
-      params = self.class.get_params(old_method, *args)
       #Adding params of methods
-      methods_overrided = Hash.new
-      params.each { |name, value|
-        if self.respond_to? name
-          methods_overrided[name] = self.method(name)
-        end
-        define_singleton_method(name) { value }
-      }
+      params = self.class.add_params(self, old_method, *args)
       method = proc { old_method.bind(self).call(*args) }
       result = self.instance_exec { operation.call(method, self) }
-
-      params.each{ |param_name, value| self.singleton_class.send :remove_method, param_name }
-      #Deleting params of methods
-      methods_overrided.each{ |name, method|
-        define_singleton_method(name) { method.call } }
+      self.class.remove_params(self, params)
       result
     end
 

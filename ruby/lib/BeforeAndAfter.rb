@@ -3,7 +3,6 @@ module Contratos
 
   def before_each_call(before, once = false)
     operation = proc{ |method, instance|
-      methods = instance.methods(false).to_s
       instance.instance_exec &before
       method.call
     }
@@ -12,7 +11,6 @@ module Contratos
 
   def after_each_call(after, once = false)
     operation = proc{ |method, instance|
-      methods = instance.methods(false).to_s
       result = method.call
       if(after.arity == 1)
         instance.instance_exec result, &after

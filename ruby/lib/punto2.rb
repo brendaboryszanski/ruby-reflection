@@ -15,8 +15,6 @@ class Guerrero
   end
 
 
-
-
   def ser_atacado(otro)
     self.vida = vida - otro.fuerza
     puts "estoy atacando"

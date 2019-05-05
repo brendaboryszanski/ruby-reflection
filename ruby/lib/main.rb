@@ -1,1 +1,2 @@
-require "./punto2.rb"
+require_relative 'punto3.rb'
+

@@ -1,34 +1,27 @@
-require_relative "Invariant.rb"
-
+require_relative 'BeforeAndAfter.rb'
+require_relative 'Invariant.rb'
 class Guerrero
-    
-  extend Invariant
-  
+
+  extend Contratos
   attr_accessor :vida, :fuerza
-  
-  invariant { vida >= 0 }
-  invariant { fuerza > 0 && fuerza < 100 }
-  
-  def initialize(vida = 100, fuerza = 20) 
-    self.vida= vida
-    self.fuerza= fuerza
+
+  def initialize(vida, fuerza)
+    vida =vida
+    fuerza= fuerza
   end
-  
+  invariant { puts self}
+  invariant { fuerza > 0 && fuerza < 100 }
+
+
   def atacar(otro)
-    otro.ser_atacado(fuerza)
+    otro.vida -= fuerza
   end
 
-  def ser_atacado(fuerza)
-    self.vida-= fuerza
+  def decir_hola
+    puts "hola"
   end
 end
 
-# Invariant no corta
-atacante = Guerrero.new(5, 5)
-#boludo = Guerrero.new(10, -50)
-#atacante.atacar(boludo)
-
-# Invariant corta
-# boludo = Guerrero.new(5, 5)
-# atacante = Guerrero.new(10, 10)
-# atacante.atacar(boludo)
+bren = Guerrero.new(-40, 30)
+zana = Guerrero.new(40,2)
+bren.atacar(zana)

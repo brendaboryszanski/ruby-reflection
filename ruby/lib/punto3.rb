@@ -6,11 +6,14 @@ class OperacionesMatematicas
   #postcondición de dividir
   #post { |result| result * divisor == dividendo }
   def dividir(dividendo, divisor)
+    puts "dividiendo"
+    puts dividendo / divisor
     dividendo / divisor
   end
 
   def divisor
     puts "DIJO DIVISOR CARAJO"
+    puts 5
     5
   end
 
@@ -23,6 +26,8 @@ end
 
 
 bren = OperacionesMatematicas.new
+
+#bren.divisor
 bren.dividir(30, 5)
 bren.divisor
 #bren.dividir(20,0)

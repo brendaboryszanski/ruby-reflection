@@ -5,20 +5,22 @@ module Contratos
   end
 
   def operations
-    @operations ||= Array.new
+    @operations ||= Hash.new
   end
 
-  def run_on_method_added(operation)
-    operations.push(operation)
+  def run_on_method_added(operation, once)
+    operations[operation] = once
   end
 
+  def get_params(method, *args)
+    param_names = method.parameters.map(&:last).map(&:to_s)
+    param_names.zip(args)
+  end
   def redefine_method(operation, name)
     old_method = instance_method(name)
     define_method(name) do |*args|
+      params = self.class.get_params(old_method, *args)
       #Adding params of methods
-      param_names = old_method.parameters.map(&:last).map(&:to_s)
-      puts param_names.to_s
-      params = param_names.zip(args)
       methods_overrided = Hash.new
       params.each { |param|
         if self.respond_to? param[0]
@@ -35,10 +37,10 @@ module Contratos
 
   end
   def method_added(name)
-    puts name.to_s
     unless redefiniendo
       @redefiniendo = true
-      operations.each{ |operation| redefine_method(operation, name) }
+      operations.keys.each{ |operation| redefine_method(operation, name) }
+      @operations = operations.delete_if{|operation, once| once}
       @redefiniendo = false
     end
 

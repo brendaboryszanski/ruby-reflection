@@ -3,7 +3,7 @@ module Contratos
 
   def before_each_call(before)
     operation = proc{ |method, instance|
-      instance.instance_exec { before }
+      instance.instance_exec &before
       method.call
     }
     run_on_method_added(operation)
@@ -12,7 +12,7 @@ module Contratos
   def after_each_call(after)
     operation = proc{ |method, instance|
       method.call
-      instance.instance_exec { after }
+      instance.instance_exec &after
     }
     run_on_method_added(operation)
   end

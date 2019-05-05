@@ -25,6 +25,7 @@ module Contratos
     end
 
   end
+
   def method_added(name)
     unless redefiniendo
       @redefiniendo = true
